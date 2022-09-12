@@ -11,4 +11,9 @@ class Ride < ApplicationRecord
     where(open: :true)
   end
 
+  def self.order_by_thrill
+    order(thrill_rating: :desc)
+  end
+  
+
 end

@@ -3,7 +3,7 @@
 <div id="mechanic-<%=@mechanic.id%>">
 Name: <%= @mechanic.name %> <br>
 Experience: <%= @mechanic.years_experience %> years <br>
-Maintenance Tickets: <% @mechanic.maintenance_tickets.open_rides.each do |ride| %> 
+Maintenance Tickets: <% @mechanic.maintenance_tickets.open_rides.order_by_thrill.each do |ride| %> 
                         <%= ride.name %>
                         <% end %>
                       
