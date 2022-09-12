@@ -8,3 +8,12 @@ Maintenance Tickets: <% @mechanic.maintenance_tickets.open_rides.order_by_thrill
                         <% end %>
                       
 </div>
+<br>
+<br>
+<br>
+<br>
+<%= form_with url: mechanic_maintenances_path(@mechanic), method: :post do |form| %>
+  <%= form.label :ride_id, "Please add ride ID" %>
+  <%= form.text_field :ride_id %>
+  <%= form.submit "Submit" %>
+<% end %>
