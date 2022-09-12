@@ -52,4 +52,17 @@ RSpec.describe Ride, type: :model do
       expect(mech1.maintenance_tickets.open_rides.order_by_thrill).to eq([ride3, ride4, ride2])
     end
   end
+
+  describe '.average_amusement_rating' do
+    it 'finds the average of the thriller rating' do
+      park = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
+
+      ride1 = Ride.create!( name: 'The Hurler', thrill_rating: 7, open: true, amusement_park_id: park.id)
+      ride2 = Ride.create!( name: 'The Patrick', thrill_rating: 5, open: true, amusement_park_id: park.id)
+      ride3 = Ride.create!( name: 'The Turner', thrill_rating: 10, open: true, amusement_park_id: park.id)
+      ride4 = Ride.create!( name: 'The Squidward', thrill_rating: 7, open: true, amusement_park_id: park.id)
+
+      expect(Ride.average_amusement_rating).to eq 7.25
+    end
+  end
 end

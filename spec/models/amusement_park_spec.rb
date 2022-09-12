@@ -11,4 +11,5 @@ RSpec.describe AmusementPark, type: :model do
     it { should validate_numericality_of(:admission_cost) }
 
   end
+
 end

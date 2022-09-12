@@ -5,4 +5,6 @@ Rails.application.routes.draw do
     resources :maintenances, only: [:create]
   end
 
+  resources :amusement_parks, only: [:show]
+
 end
