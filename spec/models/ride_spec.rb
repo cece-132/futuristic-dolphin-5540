@@ -12,4 +12,24 @@ RSpec.describe Ride, type: :model do
     it { should have_many(:maintenances) }
     it { should have_many(:mechanics).through(:maintenances) }
   end
+
+  describe '#open_rides' do
+    it 'Should sort rides by open status' do
+      mech1 = Mechanic.create!(name: 'Kara Smith', years_experience: 11)
+
+      park = AmusementPark.create!(name: 'Six Flags', admission_cost: 75)
+
+      ride1 = Ride.create!( name: 'The Hurler', thrill_rating: 7, open: false, amusement_park_id: park.id)
+      ride2 = Ride.create!( name: 'The Patrick', thrill_rating: 5, open: true, amusement_park_id: park.id)
+      ride3 = Ride.create!( name: 'The Turner', thrill_rating: 10, open: true, amusement_park_id: park.id)
+      ride4 = Ride.create!( name: 'The Squidward', thrill_rating: 7, open: true, amusement_park_id: park.id)
+
+      maintenance1 = Maintenance.create!(ride_id: ride1.id, mechanic_id: mech1.id)
+      maintenance2 = Maintenance.create!(ride_id: ride2.id, mechanic_id: mech1.id)
+      maintenance3 = Maintenance.create!(ride_id: ride3.id, mechanic_id: mech1.id)
+      maintenance4 = Maintenance.create!(ride_id: ride4.id, mechanic_id: mech1.id)
+
+      expect(mech1.maintenance_tickets.open_rides).to eq([ride2, ride3, ride4])
+    end
+  end
 end

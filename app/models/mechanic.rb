@@ -8,4 +8,9 @@ class Mechanic < ApplicationRecord
   def self.avg_experience
     average(:years_experience)
   end
+
+  def maintenance_tickets
+    rides
+  end
+
 end

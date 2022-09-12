@@ -7,4 +7,8 @@ class Ride < ApplicationRecord
   validates_presence_of :thrill_rating
   validates :open, inclusion: [true, false]
 
+  def self.open_rides
+    where(open: :true)
+  end
+
 end
