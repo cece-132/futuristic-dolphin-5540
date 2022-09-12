@@ -3,7 +3,7 @@
 <div class="mechanics">
   <% @mechanics.each do |mechanic| %>
     <div id="mechanic-<%=mechanic.id%>">
-      Name: <%= mechanic.name %> <br>
+      Name: <%=link_to mechanic.name, mechanic_path(mechanic) %> <br>
       <%= mechanic.years_experience %> years experience <br>
     </div>
   <% end %>

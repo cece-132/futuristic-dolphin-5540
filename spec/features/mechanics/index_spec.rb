@@ -13,15 +13,15 @@ RSpec.describe Mechanic do
       expect(page).to have_content("All Mechanics")
 
       within ".mechanics" do
-        expect(page).to have_content("#{mech1.name}")
-        expect(page).to have_content("#{mech2.name}")
-        expect(page).to have_content("#{mech3.name}")
-        expect(page).to have_content("#{mech4.name}")
+        expect(page).to have_link("#{mech1.name}")
+        expect(page).to have_link("#{mech2.name}")
+        expect(page).to have_link("#{mech3.name}")
+        expect(page).to have_link("#{mech4.name}")
       end
 
       within ".mechanics" do
         within "#mechanic-#{mech1.id}" do
-          expect(page).to have_content("#{mech1.name}")
+          expect(page).to have_link("#{mech1.name}")
           expect(page).to have_content("#{mech1.years_experience} years experience")
         end
       end
