@@ -8,6 +8,6 @@ RSpec.describe Mechanic, type: :model do
 
   describe 'relationships' do
     it { should have_many(:maintenances) }
-    it { should have_many(:rides).through(:maintenance) }
+    it { should have_many(:rides).through(:maintenances) }
   end
 end
